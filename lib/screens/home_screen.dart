@@ -1,6 +1,6 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'result_screen.dart';
-import 'game_logic.dart'; // Подключаем логику игры
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -47,11 +47,8 @@ class HomeScreen extends StatelessWidget {
   Widget _buildChoiceButton(BuildContext context, String choice, String image) {
     return GestureDetector(
       onTap: () {
-        // Получаем выбор противника и результат через GameLogic
-        String opponentChoice = GameLogic.generateOpponentChoice();
-        String result = GameLogic.determineResult(choice, opponentChoice);
-
-        // Переходим на экран с результатами
+        String opponentChoice = _generateRandomChoice();
+        String result = _getGameResult(choice, opponentChoice);
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -70,5 +67,20 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String _generateRandomChoice() {
+    final choices = ['Камень', 'Ножницы', 'Бумага'];
+    return choices[Random().nextInt(3)];
+  }
+
+  String _getGameResult(String player, String opponent) {
+    if (player == opponent) return 'Ничья';
+    if ((player == 'Камень' && opponent == 'Ножницы') ||
+        (player == 'Ножницы' && opponent == 'Бумага') ||
+        (player == 'Бумага' && opponent == 'Камень')) {
+      return 'Вы победили';
+    }
+    return 'Вы проиграли';
   }
 }
