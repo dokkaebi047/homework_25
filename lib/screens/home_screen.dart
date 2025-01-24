@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            // Пока ничего не делаем, это будет реализовано на этапе 2
+            // Пока ничего не делаем, это будет реализовано позже
           },
           child: const Text('Начать'),
         ),
