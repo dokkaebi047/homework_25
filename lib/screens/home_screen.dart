@@ -21,20 +21,26 @@ class HomeScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _buildChoiceButton(
-                  context,
-                  'Камень',
-                  'assets/rock.png',
+                Expanded(
+                  child: _buildChoiceButton(
+                    context,
+                    'Камень',
+                    'assets/images/rock.png',
+                  ),
                 ),
-                _buildChoiceButton(
-                  context,
-                  'Ножницы',
-                  'assets/scissors.png',
+                Expanded(
+                  child: _buildChoiceButton(
+                    context,
+                    'Ножницы',
+                    'assets/images/scissors.png',
+                  ),
                 ),
-                _buildChoiceButton(
-                  context,
-                  'Бумага',
-                  'assets/paper.png',
+                Expanded(
+                  child: _buildChoiceButton(
+                    context,
+                    'Бумага',
+                    'assets/images/paper.png',
+                  ),
                 ),
               ],
             ),
